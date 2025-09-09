@@ -4,7 +4,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from './pages/Login.jsx';
 import Layout from './layout.jsx';
-import Home from './pages/home.jsx';
+import Home from './pages/Home.jsx';
 import Form from './pages/Form.jsx';
 import { getPostById, updatePost } from './api.js';
 import PrivateRoute from './components/PrivateRoute.jsx';
