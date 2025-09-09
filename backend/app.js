@@ -13,9 +13,14 @@ app.use(cors({
   credentials: true // si usás auth con cookies o cabeceras
 }));
 
-// Para asegurar que OPTIONS no bloquea nada
-app.options("/*", cors());
-
+// Para OPTIONS global
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 app.use(express.urlencoded({ extended : false }));
 app.use(express.json());
