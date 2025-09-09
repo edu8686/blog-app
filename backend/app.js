@@ -4,14 +4,17 @@ const routerFile = require("./routes")
 const cors = require("cors")
 const PORT = process.env.PORT || 3000;
 
-
 app.use(cors({
   origin: [
-  "https://blog-front-write.onrender.com",
-  "https://blog-app-1-2fcm.onrender.com"
+    "https://blog-front-write.onrender.com",
+    "https://blog-app-1-2fcm.onrender.com"
   ],
   methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  credentials: true // si usás auth con cookies o cabeceras
 }));
+
+// Para asegurar que OPTIONS no bloquea nada
+app.options("*", cors());
 
 
 app.use(express.urlencoded({ extended : false }));
