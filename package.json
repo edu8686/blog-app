@@ -1,0 +1,20 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:backend": "cd backend && npm run dev",
+    "start:front-read": "cd front-read && npm run dev",
+    "start:front-write": "cd front-write && npm run dev",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run start:front-read\" \"npm run start:front-write\""
+  },
+    "devDependencies": {
+    "concurrently": "^8.2.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
