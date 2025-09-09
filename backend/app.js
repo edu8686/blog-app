@@ -14,7 +14,7 @@ app.use(cors({
 }));
 
 // Para asegurar que OPTIONS no bloquea nada
-app.options("*", cors());
+app.options("/*", cors());
 
 
 app.use(express.urlencoded({ extended : false }));
