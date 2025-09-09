@@ -17,8 +17,6 @@ function Home() {
   }, []);
 
 
-
-
   return (
     <div className="max-w-3xl mx-auto mt-6">
       {posts.map((post) => (

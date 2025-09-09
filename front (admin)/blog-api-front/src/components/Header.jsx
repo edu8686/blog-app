@@ -1,36 +1,23 @@
-// src/components/Header.jsx
-import React from "react";
 import { Link } from "react-router-dom";
-import { logout } from "../api";
-import { useState, useEffect } from "react";
-
-const Header = ({ title }) => {
-  const [token, setToken] = useState(null);
-  console.log("Token: ", token);
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-  }, []); // Esto se ejecuta al montar
-
-  // Opcional: escuchar cambios en localStorage
-  useEffect(() => {
-    const handleStorage = () => setToken(localStorage.getItem("token"));
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+const Header = ({ title, token, setToken }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null); // avisamos a React
+  };
 
   return (
-    <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">{title}</h1>
-      <nav>
-        {token ? <Link to={"/home"}> Home </Link> : ""}
-        {token ? (
-          <Link onClick={logout} to={"/"}>
-            {" "}
-            Log out{" "}
+    <header className="bg-gray-800 text-white p-4 flex items-center">
+      <h1 className="text-xl font-bold flex-1 text-center">{title}</h1>
+      <nav className="absolute right-4">
+        {token && (
+          <Link to={"/home"} className="mr-4">
+            Home
           </Link>
-        ) : (
-          ""
+        )}
+        {token && (
+          <Link onClick={handleLogout} to={"/"}>
+            Log out
+          </Link>
         )}
       </nav>
     </header>

@@ -13,10 +13,10 @@ export async function login(username, password) {
   return data;
 }
 
-export async function logout() {
-  localStorage.removeItem("token");
-  console.log(localStorage.getItem("token"));
-}
+// export async function logout() {
+//   localStorage.removeItem("token");
+//   console.log(localStorage.getItem("token"));
+// }
 
 export async function getPostById(id) {
   try {

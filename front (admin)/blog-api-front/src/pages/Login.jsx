@@ -3,12 +3,15 @@ import { useState } from "react";
 import Button from '../components/Button'
 import { login } from "../api";
 import { Navigate, useNavigate, Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+
 
 function  Login () {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const { setToken } = useOutletContext();
 
   const navigate = useNavigate();
 
@@ -22,6 +25,7 @@ function  Login () {
     const backRes = await login(formData.username, formData.password);
     console.log(backRes.message);
     localStorage.setItem("token", backRes.token);
+    setToken(backRes.token); 
     navigate("/home")
 
   };
