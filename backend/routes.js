@@ -28,6 +28,8 @@ router.post("/login", passport.authenticate("local", { session : false }), userC
 router.get("/user", passport.authenticate("jwt", { session : false }), userController.getUser);
 router.put("/user", passport.authenticate("jwt", { session : false }), userController.updateUser);
 router.delete("/user", passport.authenticate("jwt", { session : false }), userController.deleteUser);
+router.post("/signup", userController.signupUser); // 👈 nueva ruta
+
 
 
 module.exports = router;

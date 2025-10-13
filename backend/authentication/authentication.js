@@ -11,8 +11,9 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;
 
 function createJWT(id) {
-  return (token = jwt.sign({ id: id }, process.env.JWT_SECRET));
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" }); 
 }
+
 
 passport.use(
   new LocalStrategy(async function (username, password, done) {

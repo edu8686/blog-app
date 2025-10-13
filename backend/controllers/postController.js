@@ -46,9 +46,11 @@ async function createPost(req, res, next) {
   const newPost = req.body;
   const userId = req.user.id;
 
-  if (!newPost.title || !newPost.text) {
-    res.status(400).send("Title and text required");
-    return;
+  if (!newPost.title || newPost.title.length < 3) {
+    return res.status(400).send("Title too short");
+  }
+  if (!newPost.text || newPost.text.length < 10) {
+    return res.status(400).send("Text too short");
   }
 
   try {
@@ -59,7 +61,7 @@ async function createPost(req, res, next) {
         author: {
           connect: { id: userId },
         },
-        isPublish : newPost.publish
+        isPublished: newPost.isPublished ?? true
       },
     });
 

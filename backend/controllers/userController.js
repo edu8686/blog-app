@@ -9,6 +9,30 @@ async function getUser(req, res) {
   res.json(req.user);
 }
 
+async function signupUser(req, res, next) {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).send("Username and password required");
+  }
+
+  try {
+    const existingUser = await prisma.user.findUnique({ where: { username } });
+    if (existingUser) {
+      return res.status(400).send("Username already exists");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await prisma.user.create({
+      data: { username, password: hashedPassword },
+    });
+
+    res.status(201).json({ message: "User created successfully", newUser });
+  } catch (err) {
+    next(err);
+  }
+}
+
 
 async function loginUser(req, res) {
   // Passport ya autenticó, por eso req.user está disponible
@@ -72,5 +96,6 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-  loginUser
+  loginUser,
+  signupUser
 };
