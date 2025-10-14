@@ -7,6 +7,8 @@ Registered users can also **add comments**, fostering an interactive reading exp
 
 ## 🚀 Live Demo
 
+- Deployment done with Render.
+
 👉 [Visit the live site for read and comment version](https://blog-app-1-2fcm.onrender.com/)
 
 
@@ -39,7 +41,6 @@ Registered users can also **add comments**, fostering an interactive reading exp
 ### 🖥️ Frontend
 - **React** for dynamic rendering and component-based UI.
 - **React Router** for client-side navigation.
-- **Axios** for API communication.
 
 ---
 
@@ -93,8 +94,8 @@ This project is released under the MIT License — you can freely use and modify
 
 Developed by Eduardo D. Negri
 
-🌍 GitHub
+🌍 [GitHub](https://github.com/edu8686)
 
-💼 LinkedIn
+💼 [LinkedIn](https://www.linkedin.com/in/eduardodnegri/)
 
 Special thanks to the open-source communities behind React, Express, and Prisma.
