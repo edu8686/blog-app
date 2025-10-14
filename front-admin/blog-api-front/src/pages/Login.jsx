@@ -1,12 +1,11 @@
 // src/components/Login.jsx
 import { useState } from "react";
-import Button from '../components/Button'
+import Button from "../components/Button";
 import { login } from "../api";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
-
-function  Login () {
+function Login() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,11 +22,13 @@ function  Login () {
     e.preventDefault();
     console.log(formData);
     const backRes = await login(formData.username, formData.password);
-    console.log(backRes.message);
-    localStorage.setItem("token", backRes.token);
-    setToken(backRes.token); 
-    navigate("/home")
-
+    if (backRes?.token) {
+      localStorage.setItem("token", backRes.token);
+      setToken(backRes.token);
+      navigate("/home");
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
   };
 
   return (
@@ -56,11 +57,15 @@ function  Login () {
             required
           />
         </div>
-        <Button type="submit" className="w-full">Login</Button>
+        <Button type="submit" className="w-full">
+          Login
+        </Button>
       </form>
-      <p>Not registered? <Link to={"/signup"}>Sign up</Link></p>
+      <p>
+        Not registered? <Link to={"/signup"}>Sign up</Link>
+      </p>
     </div>
   );
-};
+}
 
 export default Login;

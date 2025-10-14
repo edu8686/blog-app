@@ -125,12 +125,16 @@ export async function createPost(post, publish) {
 }
 
 export async function createComment(postId, text, author) {
+  const token = localStorage.getItem("token");
   try {
     const newComment = await fetch(
       `${API_URL}/post/${postId}/comments/new_comment`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ text, author }),
       }
     );
@@ -144,6 +148,7 @@ export async function createComment(postId, text, author) {
     console.log(err);
   }
 }
+
 
 
 export async function deleteComment(commentId, postId) {
