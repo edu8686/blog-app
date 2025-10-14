@@ -9,7 +9,7 @@ Registered users can also **add comments**, fostering an interactive reading exp
 
 👉 [Visit the live site for read and comment version](https://blog-app-1-2fcm.onrender.com/)
 
-*(Replace the link above with your actual deployment URL — e.g., Vercel, Netlify, or Render.)*
+
 
 ---
 
