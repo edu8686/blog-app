@@ -17,9 +17,9 @@ function Comment({ postId, createComment }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!comment.trim()) return; // evitar enviar vacío
-    createComment(postId, comment, author);           // callback al padre
-    setComment("");              // limpiar input
+    if (!comment.trim()) return; 
+    createComment(postId, comment, author);           
+    setComment(""); 
     setAuthor("")
   };
 

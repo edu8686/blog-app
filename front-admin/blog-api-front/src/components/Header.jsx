@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Header = ({ title, token, setToken }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setToken(null); // avisamos a React
+    setToken(null);
   };
 
   return (

@@ -1,4 +1,4 @@
-// src/components/Layout.jsx
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
@@ -17,7 +17,7 @@ function Layout() {
     <div className="flex flex-col min-h-screen">
       <Header title="Blog API (Odin Project)" token={token} setToken={setToken} />
       <main className="flex-grow p-4">
-        <Outlet context={{ token, setToken }} /> {/* Aquí se renderizan las rutas hijas */}
+        <Outlet context={{ token, setToken }} /> 
       </main>
       <Footer />
     </div>

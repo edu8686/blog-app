@@ -8,7 +8,7 @@ import Home from './pages/Home.jsx';
 import Form from './pages/Form.jsx';
 import { getPostById, updatePost } from './api.js';
 import PrivateRoute from './components/PrivateRoute.jsx';
-//import PostDetail from './components/PostDetail.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 
       // Rutas privadas
       {
-        element: <PrivateRoute />, // envuelve rutas que requieren auth
+        element: <PrivateRoute />, 
         children: [
           { path: "home", element: <Home /> },
           { path: "new-post", element: <Form edit={false} /> },

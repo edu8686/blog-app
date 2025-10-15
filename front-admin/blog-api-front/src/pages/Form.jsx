@@ -15,7 +15,7 @@ const Form = ({
   const navigate = useNavigate();
 
   const location = useLocation();
-  const { post } = location.state || {}; // 👈 recuperás el objeto
+  const { post } = location.state || {}; 
 
   useEffect(() => {
     if (edit && post) {

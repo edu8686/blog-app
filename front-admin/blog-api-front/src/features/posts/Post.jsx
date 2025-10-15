@@ -74,8 +74,8 @@ function Post({ post, deletePost, fetchPosts }) {
         <Button
           variant="danger"
           onClick={async () => {
-            await deletePost(post.id); // espera que termine
-            await fetchPosts(); // refresca los posts
+            await deletePost(post.id); 
+            await fetchPosts(); 
           }}
           className="px-3 py-1 text-sm rounded font-bold flex items-center justify-center"
         >
