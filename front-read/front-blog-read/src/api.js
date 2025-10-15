@@ -1,4 +1,7 @@
-const API_URL = "https://blog-app-69pn.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
+
+console.log("🌍 API_URL:", API_URL);
+
 
 
 
@@ -7,7 +10,7 @@ export async function getPostById(id) {
     const post = await fetch(`${API_URL}/posts/${id}`, {
       method: "GET",
     });
-    const data = post.json();
+    const data = await post.json();
     return data;
   } catch (err) {
     console.log("Error: ", err);

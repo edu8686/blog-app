@@ -10,7 +10,10 @@ if (process.env.NODE_ENV !== "production") {
 app.use(cors({
   origin: [
     "https://blog-front-write.onrender.com",
-    "https://blog-app-1-2fcm.onrender.com"
+    "https://blog-app-1-2fcm.onrender.com",
+    "http://localhost:5173",
+    "http://localhost:5170"
+
   ],
   methods: ["GET","POST","PUT","DELETE","OPTIONS"],
   credentials: true // si usás auth con cookies o cabeceras

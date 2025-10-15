@@ -11,7 +11,6 @@ const Form = ({
   edit,
 }) => {
   const [formData, setFormData] = useState(initialValues);
-  const [isPublished, setIsPublished] = useState(true)
 
   const navigate = useNavigate();
 
@@ -28,18 +27,17 @@ const Form = ({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e, publish) => {
+    e.preventDefault();
+
     if (edit) {
-      console.log(formData);
-      e.preventDefault();
-      updatePost(post.id, formData);
-      navigate("/home");
+      const updated = { ...formData, isPublished: publish };
+      await updatePost(post.id, updated);
     } else {
-      e.preventDefault();
-      console.log(formData);
-      createPost(formData, isPublished)
-      navigate("/home");
+      await createPost(formData, publish);
     }
+
+    navigate("/home");
   };
 
   return (
@@ -67,8 +65,17 @@ const Form = ({
           required
         />
       </div>
-      <Button type="submit" onClick={() => {setIsPublished(false)}} className="">Save</Button>
-      <Button type="submit" onClick={() => {setIsPublished(true)}}>Publish</Button>
+      <Button
+        type="button"
+        onClick={(e) => handleSubmit(e, false)}
+        className="mr-2"
+      >
+        Save
+      </Button>
+
+      <Button type="button" onClick={(e) => handleSubmit(e, true)}>
+        Publish
+      </Button>
     </form>
   );
 };

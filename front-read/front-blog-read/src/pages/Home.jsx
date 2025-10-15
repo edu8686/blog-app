@@ -22,12 +22,15 @@ function Home() {
   }
 
   console.log(posts);
+  console.log("🎨 Renderizando lista de posts:", posts.length);
 
 
   return (
     <div className="max-w-3xl mx-auto mt-6">
       {posts.map((post) => (
-       post.isPublished && <Post key={post.id} post={post} createComment={handleCreateComment} />
+        post.isPublished && (
+          <Post key={post.id} post={post} createComment={handleCreateComment} />
+        )
       ))}
     </div>
   );

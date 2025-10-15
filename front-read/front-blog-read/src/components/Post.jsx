@@ -1,6 +1,7 @@
 import CommentItem from "./CommentItem";
 
 function Post({ post, createComment }) {
+  console.log("🧩 Renderizando Post:", post.title);
   console.log("Post component: ", post);
   console.log("Coments: ", post.comments);
   const comments = post.comments;
